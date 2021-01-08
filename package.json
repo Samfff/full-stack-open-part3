@@ -20,5 +20,8 @@
   "homepage": "https://github.com/Samfff/full-stack-open-part3#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
