@@ -48,8 +48,29 @@ app.get('/info', (req, res) => {
 
 app.delete('/api/persons/:id', (req, res) => {
   const id = Number(req.params.id)
-  notes = notes.filter(note => note.id !== id)
+  persons = persons.filter(note => note.id !== id)
   res.status(204).end()
+})
+
+app.post('/api/persons', (req, res) => {
+    const data = req.body
+
+    if (!data.name || !data.number) {
+        res.status(400).json({error: "Missing fields in request"})
+    }
+    else if (persons.map(person => person.name).includes(data.name)) {
+        res.status(400).json({error: "Person exists in phonebook"})
+    }
+
+    const person = {
+        name: data.name,
+        number: data.number,
+        id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
+    }
+
+    persons = persons.concat(person)
+    res.json(person)
+
 })
 
 const PORT = 3001
