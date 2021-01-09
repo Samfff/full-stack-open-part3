@@ -6,8 +6,10 @@ if (process.argv.length < 3) {
 
 const password = process.argv[2]
 
-const clusterUrl = `mongodb+srv://samsihvonen_fullstack:${password}@cluster0.isb7d.mongodb.net/<dbname>?retryWrites=true&w=majority
-`
+// <dbname> turned out to be the name of the mongo collection,
+// since I forgot to change the name initially :_D
+
+const clusterUrl = `mongodb+srv://samsihvonen_fullstack:${password}@cluster0.isb7d.mongodb.net/<dbname>?retryWrites=true`
 
 mongoose.connect(clusterUrl, {
   useNewUrlParser: true,
